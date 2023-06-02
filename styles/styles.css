@@ -23,18 +23,18 @@ a:hover, a:active {
 .navbar {
 	font-family: "Georgia";
 	background-color: #00ffff ;
-	border: 2vw solid green ;
-	height: 20vw;
+	border: .5vw solid green ;
+	height: 10vw;
 	justify-content: space-evenly;
 }
 a.trollplay {
 	 font-family: "Georgia";
 	 color: fuchsia;
-	 font-size: 18vw;
+	 font-size: 8vw;
 }
 a.maintop {
 	 font-family: "Georgia";
 	 color: yellow;
-	 font-size: 9vw;
+	 font-size: 4vw;
     display: inline;
 }
