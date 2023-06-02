@@ -29,10 +29,11 @@ a:hover, a:active {
 .navbar {
 	background-color: #00ffff ;
 	border: 1px solid green ;
-    display: inline-block;
+    display: block;
 }
 .trollplay {
 	 font-family: "Georgia";
 	 color: fuchsia;
 	 font-size: 300%;
+	 display: inline;
 }
