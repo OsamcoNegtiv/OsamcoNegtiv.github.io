@@ -3,7 +3,7 @@
 }
 h1 {
 	color: black;
-	font-family: "Trebuchet MS";
+	font-family: Verdana;
 	font-size: 300%;
 }
 h2 {
@@ -14,7 +14,7 @@ p {
 }
 a {
 	color: black;
-	font-family:"Trebuchet MS";
+	font-family:Verdana;
 	font-size: 200%;
 	text-decoration: none;
 
