@@ -25,18 +25,15 @@ a:hover, a:active {
 	background-color: #00ffff ;
 	border: .2vw solid green ;
 	height: 9vw;
-	justify-content: space-between;
+	justify-content: space-evenly;
+	align-content: center;
 }
 a.trollplay {
-	 font-family: "Georgia";
 	 color: fuchsia;
 	 font-size: 6vw;
-	justify-content: space-evenly;
 }
 a.maintop {
-	 font-family: "Georgia";
 	 color: yellow;
 	 font-size: 2vw;
     display: inline;
-	justify-content: space-evenly;
 }
