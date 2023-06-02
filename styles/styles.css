@@ -20,13 +20,12 @@ a:link, a:visited {
 a:hover, a:active {
   color: blue;
 }
-.navbar {
+#navbar {
 	font-family: "Georgia";
 	background-color: #00ffff ;
 	border: .2vw solid green ;
 	height: 9vw;
 	justify-content: space-evenly;
-	align-content: center;
 }
 a.trollplay {
 	 color: fuchsia;
