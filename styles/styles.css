@@ -2,6 +2,7 @@
 	 background-color: #d5a6bd; /* Yeah I'm gonna... I'm gonna want to change this. */
 }
 h1 {
+	color: black;
 	font-family: verdana;
 	font-size: 300%;
 }
@@ -11,4 +12,8 @@ h3 {
 }
 p {
 }
-
+a {
+	color: black;
+	font-family: verdana;
+	font-size: 300%;
+}
