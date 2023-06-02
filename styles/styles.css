@@ -1,9 +1,10 @@
  body {
 	 background-color: #d5a6bd; /* Yeah I'm gonna... I'm gonna want to change this. */
+	 font-family:"Trebuchet MS";
 }
 h1 {
 	color: black;
-	font-family: Verdana;
+	font-family: "Trebuchet MS";
 	font-size: 300%;
 }
 h2 {
@@ -14,8 +15,19 @@ p {
 }
 a {
 	color: black;
-	font-family:Verdana;
+	font-family:"Trebuchet MS";
 	font-size: 200%;
 	text-decoration: none;
+}
+a:link, a:visited {
+  background-color: #f44336;
+  color: white;
+  padding: 15px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
 
+a:hover, a:active {
+  background-color: red;
 }
