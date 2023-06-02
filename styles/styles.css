@@ -16,20 +16,24 @@ a:link, a:visited {
 	text-align: center;
 	text-decoration: none;
 }
-
 a:hover, a:active {
   color: blue;
 }
 #navbar {
 	font-family: "Georgia";
-	background-color: #00ffff ;
-	border: .2vw solid green ;
+	background-color: #00ffff;
+	border: .2vw solid green;
 	height: 9vw;
+    width: 96vw;
+    padding: 1vw;
+    margin: auto;
+    position: relative;
+    text-align: justify;
+  	text-align-last: justify;
 }
 a.trollplay {
-	 color: fuchsia;
-	 font-size: 6vw;
-
+	color: fuchsia;
+	font-size: 6vw;
 }
 a.maintop {
 	color: yellow;
