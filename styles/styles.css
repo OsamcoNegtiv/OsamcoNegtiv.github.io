@@ -6,12 +6,6 @@ h1 {
 	color: black;
 	font-size: 300%;
 }
-h2 {
-}
-h3 {
-}
-p {
-}
 a {
 	color: black;
 	font-size: 200%;
@@ -24,16 +18,16 @@ a:link, a:visited {
 }
 
 a:hover, a:active {
-  background-color: blue;
+  color: blue;
 }
 .navbar {
+	font-family: "Georgia";
 	background-color: #00ffff ;
 	border: 1px solid green ;
-    display: block;
+    display: inline;
 }
 .trollplay {
 	 font-family: "Georgia";
 	 color: fuchsia;
 	 font-size: 300%;
-	 display: inline;
 }
