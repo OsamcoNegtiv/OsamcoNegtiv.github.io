@@ -23,7 +23,8 @@ a:hover, a:active {
 .navbar {
 	font-family: "Georgia";
 	background-color: #00ffff ;
-	border: 1px solid green ;
+	border: 10% solid green ;
+	height: 10%;
 }
 a.trollplay {
 	 font-family: "Georgia";
