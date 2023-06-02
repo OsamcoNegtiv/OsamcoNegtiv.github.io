@@ -29,9 +29,10 @@ a:hover, a:active {
 .navbar {
 	background-color: #00ffff ;
 	border: 1px solid green ;
+    display: inline-block;
 }
 .trollplay {
-	 font-family: "Trebuchet MS";
+	 font-family: "Georgia";
 	 color: fuchsia;
 	 font-size: 300%;
 }
