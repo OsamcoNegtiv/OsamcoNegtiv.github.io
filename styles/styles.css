@@ -4,7 +4,6 @@
 }
 h1 {
 	color: black;
-	font-family: "Trebuchet MS";
 	font-size: 300%;
 }
 h2 {
@@ -15,13 +14,12 @@ p {
 }
 a {
 	color: black;
-	font-family:"Trebuchet MS";
 	font-size: 200%;
 	text-decoration: none;
 }
 a:link, a:visited {
-  background-color: #f44336;
-  color: white;
+  background-color: blue;
+  color: fuchsia;
   padding: 15px 25px;
   text-align: center;
   text-decoration: none;
@@ -29,5 +27,5 @@ a:link, a:visited {
 }
 
 a:hover, a:active {
-  background-color: red;
+  background-color: yellow;
 }
