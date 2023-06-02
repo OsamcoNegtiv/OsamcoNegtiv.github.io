@@ -30,3 +30,8 @@ a:hover, a:active {
 	background-color: #00ffff ;
 	border: 1px solid green ;
 }
+.trollplay {
+	 font-family: "Trebuchet MS";
+	 color: fuchsia;
+	 font-size: 300%;
+}
