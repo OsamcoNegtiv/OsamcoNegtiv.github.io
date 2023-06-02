@@ -29,12 +29,9 @@ a:hover, a:active {
 a.trollplay {
 	 color: fuchsia;
 	 font-size: 6vw;
-	justify-content: space-evenly;
 
 }
 a.maintop {
 	color: yellow;
 	font-size: 2vw;
-	display: inline;
-	justify-content: space-evenly;
 }
