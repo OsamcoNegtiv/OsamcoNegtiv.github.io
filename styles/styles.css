@@ -24,17 +24,17 @@ a:hover, a:active {
 	font-family: "Georgia";
 	background-color: #00ffff ;
 	border: .5vw solid green ;
-	height: 10vw;
+	height: 9vw;
 	justify-content: space-evenly;
 }
 a.trollplay {
 	 font-family: "Georgia";
 	 color: fuchsia;
-	 font-size: 8vw;
+	 font-size: 6vw;
 }
 a.maintop {
 	 font-family: "Georgia";
 	 color: yellow;
-	 font-size: 4vw;
+	 font-size: 2vw;
     display: inline;
 }
