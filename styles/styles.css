@@ -38,3 +38,7 @@ a.maintop { /* handles all of the other links in the navbar */
 	color: yellow;
 	font-size: 1.5vw;
 }
+#imgbox {
+	float: right;
+	border: .2vw solid green;
+}
