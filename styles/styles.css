@@ -2,9 +2,13 @@
 	 background-color: #d5a6bd; /* Yeah I'm gonna... I'm gonna want to change this. EDIT: Nevermind this colour rules! */
 	 font-family:"Trebuchet MS";
 }
+h2 {
+	color: black;
+	font-size: .8vw;
+}
 p {
 	color: black;
-	font-size: 2vw;
+	font-size: 1.5vw;
 }
 a {
 	color: black;
@@ -23,9 +27,9 @@ a:hover, a:active {
 	background-color: blue;
 	border: .2vw solid green;
 	height: 9vw;
-    width: 96vw;
-    padding: 1vw;
-    text-align: center;
+	width: 96vw;
+	padding: 1vw;
+	text-align: center;
 }
 #navbar a {
 	padding: 2vw;
@@ -38,7 +42,8 @@ a.maintop { /* handles all of the other links in the navbar */
 	color: yellow;
 	font-size: 1.5vw;
 }
-#imgbox {
+.imgbox {
 	float: right;
 	border: .2vw solid green;
+	text-align: center;
 }
