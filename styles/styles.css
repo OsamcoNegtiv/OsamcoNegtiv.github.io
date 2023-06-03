@@ -52,6 +52,6 @@ a.maintop { /* handles all of the other links in the navbar */
 	text-align: center;
 }
 .imgbox img {
-  max-width: 100%;
+  max-width: 6vw;
   height: auto;
 }
