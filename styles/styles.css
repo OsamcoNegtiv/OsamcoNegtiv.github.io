@@ -6,6 +6,10 @@ h2 {
 	color: black;
 	font-size: .6vw;
 }
+img {
+  max-width: 100%;
+  height: auto;
+}
 p {
 	color: black;
 	font-size: 1.5vw;
@@ -46,6 +50,4 @@ a.maintop { /* handles all of the other links in the navbar */
 	float: right;
 	border: .2vw solid green;
 	text-align: center;
-	max-width: 100%;
-	height: auto;
 }
