@@ -51,3 +51,7 @@ a.maintop { /* handles all of the other links in the navbar */
 	border: .2vw solid green;
 	text-align: center;
 }
+.imgbox img {
+  max-width: 100%;
+  height: auto;
+}
