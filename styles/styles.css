@@ -1,14 +1,13 @@
  body {
-	 background-color: #d5a6bd; /* Yeah I'm gonna... I'm gonna want to change this. */
+	 background-color: #d5a6bd; /* Yeah I'm gonna... I'm gonna want to change this. EDIT: Nevermind this colour rules! */
 	 font-family:"Trebuchet MS";
 }
-h1 {
+p {
 	color: black;
-	font-size: 300%;
+	font-size: 2vw;
 }
 a {
 	color: black;
-	font-size: 200%;
 	text-decoration: none;
 }
 a:link, a:visited {
@@ -19,23 +18,23 @@ a:link, a:visited {
 a:hover, a:active {
   color: blue;
 }
-#navbar {
+#navbar { /* Handles the top navbar */
 	font-family: "Georgia";
-	background-color: #00ffff;
+	background-color: blue;
 	border: .2vw solid green;
 	height: 9vw;
     width: 96vw;
     padding: 1vw;
-    margin: auto;
-    position: relative;
-    text-align: justify;
-  	text-align-last: justify;
+    text-align: center;
 }
-a.trollplay {
+#navbar a {
+	padding: 2vw;
+}
+a.trollplay { /* Handles just the logo */
 	color: fuchsia;
 	font-size: 6vw;
 }
-a.maintop {
+a.maintop { /* handles all of the other links in the navbar */
 	color: yellow;
-	font-size: 2vw;
+	font-size: 1.5vw;
 }
