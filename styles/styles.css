@@ -2,14 +2,6 @@
 	 background-color: #d5a6bd; /* Yeah I'm gonna... I'm gonna want to change this. EDIT: Nevermind this colour rules! */
 	 font-family:"Trebuchet MS";
 }
-h3 {
-	color: black;
-	font-size: .6vw;
-}
-img {
-  max-width: 100%;
-  height: auto;
-}
 p {
 	color: black;
 	font-size: 1.5vw;
@@ -54,6 +46,7 @@ a.maintop { /* handles all of the other links in the navbar */
 .imgbox img {
   max-width: 6vw;
   height: auto;
+  padding: 0.5vw;
 }
 .imgbox h3 {
 	color: black;
