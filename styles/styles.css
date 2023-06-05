@@ -48,8 +48,7 @@ a.maintop { /* handles all of the other links in the navbar */
   height: auto;
   padding: 0.5vw;
 }
-.imgbox p {
+.imgbox h3 {
 	color: black;
 	font-size: .6vw;
-	font-weight: bold;
 }
