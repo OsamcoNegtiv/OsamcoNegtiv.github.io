@@ -4,7 +4,7 @@
 }
 p {
 	color: black;
-	font-size: 1.5vw;
+	font-size: 1.5%;
 }
 a {
 	color: black;
@@ -21,35 +21,35 @@ a:hover, a:active {
 #navbar { /* Handles the top navbar */
 	font-family: "Georgia";
 	background-color: blue;
-	border: .2vw solid green;
-	max-height: 9vw;
-	max-width: 96vw;
-	padding: 1vw;
+	border: .2% solid green;
+	max-height: 9%;
+	max-width: 96%;
+	padding: 1%;
 	text-align: center;
 }
 #navbar a {
-	padding: 2vw;
+	padding: 2%;
 }
 a.trollplay { /* Handles just the logo */
 	color: fuchsia;
-	font-size: 6vw;
+	font-size: 6%;
 }
 a.maintop { /* handles all of the other links in the navbar */
 	color: yellow;
-	font-size: 1.5vw;
+	font-size: 1.5%;
 }
 .imgbox {
 	float: right;
-	border: .2vw solid green;
+	border: .2% solid green;
 	text-align: center;
 }
 .imgbox img {
-  max-width: 6vw;
+  max-width: 6%;
   height: auto;
-  padding: 0.5vw;
+  padding: 0.5%;
 }
 .imgbox p {
 	color: black;
-	font-size: .6vw;
+	font-size: .6%;
 	font-weight: bold;
 }
