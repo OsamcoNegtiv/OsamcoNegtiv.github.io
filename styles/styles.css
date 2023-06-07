@@ -22,8 +22,8 @@ a:hover, a:active {
 	font-family: "Georgia";
 	background-color: blue;
 	border: .2vw solid green;
-	height: 9vw;
-	width: 96vw;
+	max-height: 9vw;
+	max-width: 96vw;
 	padding: 1vw;
 	text-align: center;
 }
