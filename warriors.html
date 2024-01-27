@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <title>Warrior Cats</title>
+    <link rel="stylesheet" href="styles/warriorsstyle.css">
+  </head>
+  <body>
+    <h1>Warrior Cats Game</h1>
+
+    <main>
+      <div id="Gen">
+        <h2>Control Panel</h2>
+        <br/>
+        Current Moon: <span id="moon"></span>
+        <br/>
+        Current Season: <span id="season"></span>
+        <br/>
+        <button onclick="nextmoon()">
+          Next Moon
+        </button>
+
+      </div>
+
+      <div id="ThunderClan">
+      <h2>ThunderClan</h2>
+
+      <button onclick="tclistmembers()">
+          List Members
+      </button>
+      <br/>
+      <button onclick="tcincrementfood()">
+          +1 Food
+      </button>
+      <button onclick="tcincrementmembers()">
+          +1 Member
+      </button>
+      <br/>
+      <br/>
+          Members: <span id="tc_population"></span>
+      <br/>
+          Food per Tick: <span id="tc_foodcost"></span>
+      <br/>
+          Food: <span id="tc_food"></span>
+      <h1></h1>
+
+      </div>
+  <br/>
+    RiverClan
+  <br/>
+    ShadowClan
+  <br/>
+    WindClan
+  <br/>
+    </main>
+    <footer>Thanks to Evan for the original version of this game!</footer>
+    <script src="scripts/warriorsscript.js">
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+ body {
+  background-color: darkgreen;
+}
+
+h1 {
+  color: white;
+  margin-left: 20px;
+}
+
+h2 {
+  color: white;
+}
+
+p {
+  color: white;
+}
+
+span {
+  color: white;
+}
+
+#ThunderClan {
+  width: auto;
+  height: auto;
+  padding: 50px;
+  border: 5px solid yellow;
+  margin: 0;
+}
+
+#Gen {
+  width: auto;
+  height: auto;
+  padding: 50px;
+  border: 5px solid gray;
+  margin: 0;
+}
