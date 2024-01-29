@@ -26,14 +26,17 @@ function thunderclanvariables() {
 //Saving Functions
 
 function save(state) {
-    localStorage.setItem(tc_food, JSON.stringify(tc_food));
+    localStorage.setItem("token_tc_food", JSON.stringify(tc_food));
 }
 
 function load() {
-    let tc_food = number(localStorage.getItem(tc_food));
+    tc_food = number(localStorage.getItem("token_tc_food"));
     thunderclanvariables();
 }
 
+function testtoken() {
+    alert(localStorage.getItem("token_tc_food"));
+}
 
 //General Functions
 function nextmoon() {
