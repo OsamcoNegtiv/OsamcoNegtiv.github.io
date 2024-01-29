@@ -30,7 +30,7 @@ function save(state) {
 }
 
 function load() {
-    let tc_food = number(JSON.parse(localStorage.getItem(tc_food)));
+    let tc_food = number(localStorage.getItem(tc_food));
     thunderclanvariables();
 }
 
