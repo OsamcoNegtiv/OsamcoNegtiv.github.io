@@ -28,7 +28,7 @@ a:hover, a:active {
 	text-align: center;
 }
 #navbar a {
-	padding: 2vw;
+	padding: 1.4vw;
 }
 a.trollplay { /* Handles just the logo */
 	color: fuchsia;

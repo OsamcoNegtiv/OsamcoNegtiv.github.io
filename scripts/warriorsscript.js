@@ -23,6 +23,17 @@ function thunderclanvariables() {
         document.getElementById("tc_food").innerHTML = tc_food;
 }
 
+//Saving Functions
+
+function save(state) {
+    localStorage.setItem(tc_food, JSON.stringify(tc_food));
+}
+
+function load() {
+    tc_food = number(JSON.parse(localStorage.getItem(tc_food)));
+    thunderclanvariables();
+}
+
 
 //General Functions
 function nextmoon() {
