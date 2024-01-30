@@ -5,6 +5,68 @@ GameState = {
 
 //Global Arrays
 const seasons = ["Newleaf","Greenleaf","Leaffall","Leafbare"];
+const territories = [{
+    name: "Sunningrocks"
+    },{
+    name: "ThunderpathTunnels"
+    },{
+    name: "RiverClanCamp"
+    },{
+    name: "Owltree"
+    },{
+    name: "BurntSycamore"
+    },{
+    name: "ShadowClanCamp"
+    },{
+    name: "Rivers"
+    },{
+    name: "Tunnels"
+    },{
+    name: "GorgeSouthBank"
+    },{
+    name: "WindClanCamp"
+    },{
+    name: "RabbitWarrens"
+    },{
+    name: "Marshes"
+    },{
+    name: "ThunderClanCamp"
+    },{
+    name: "Forest"
+    },{
+    name: "TreecutPlace"
+    },{
+    name: "Carrionplace"
+    },{
+    name: "Snakerocks"
+    },{
+    name: "SandyHollow"
+    },{
+    name: "TwolegFarm"
+    },{
+    name: "GorgeNorthBank"
+    },{
+    name: "Tallpines"
+    },{
+    name: "Shallows"
+    },{
+    name: "Roadkill"
+    },{
+    name: "Highstones"
+    },{
+    name: "Riverbed"
+    }
+]
+
+function populateterritories() {
+    for (let x in territories) {
+            territories[x].newleaf = rounddecimal(Math.random());
+            territories[x].greenleaf = rounddecimal(Math.random() * 1.2);
+            territories[x].leaffall = rounddecimal(Math.random() * 0.8);
+            territories[x].leafbare = rounddecimal(Math.random() * 0.4)
+    }
+}
+
 
 //General Variables
 GameState.season = seasons[0];
@@ -160,11 +222,17 @@ function dropdown(id) {
   }
 }
 
+function rounddecimal(number) {
+    rounded = Math.round(number * 10) / 10;
+    return rounded
+}
+
 function initialize() {
     clanvariables();
     generalvariables();
+    populateterritories()
 }
 
 function testarray() {
-    alert(clans[1].food)
+    alert(territories[1].newleaf)
 }
