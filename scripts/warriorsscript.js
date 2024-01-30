@@ -91,7 +91,7 @@ function clanvariables() {
 //Saving Functions
 function save() {
     //save general variables
-    localStorage.setItem("moon", JSON.stringify(GameState));
+    localStorage.setItem("GameState", JSON.stringify(GameState));
 
     //save ThunderClan variables
     localStorage.setItem("ThunderClan", JSON.stringify(ThunderClan));
