@@ -5,7 +5,7 @@
     <title>Warrior Cats</title>
     <link rel="stylesheet" href="styles/warriorsstyle.css">
   </head>
-  <body>
+  <body onload="initialize()">
     <h1>Warrior Cats Game</h1>
 
     <main>
@@ -32,11 +32,11 @@
       <div id="ThunderClan">
       <h2>ThunderClan</h2>
 
-      <button onclick="tclistmembers()">
+      <button onclick="listmembers(ThunderClan)">
           List Members
       </button>
       <br/>
-      <button onclick="tcincrementfood()">
+      <button onclick="incrementfood(ThunderClan,1)">
           +1 Food
       </button>
       <button onclick="tcincrementmembers()">
@@ -59,17 +59,20 @@
   <br/>
     WindClan
   <br/>
-    <button onclick="dropdown()">
+    <button onclick="dropdown('devTools')">
       Dev Tools
     </button>
     <div id="devTools">
       <button onclick="testtoken()">
         Test Save
       </button>
+      <button onclick="testarray()">
+        Test Array
+      </button>
     </div>
     </main>
     <footer>
-    Version Alpha 0.1.0
+    Version Alpha 0.2.0
     <br/>
     Thanks to Evan for the original version of this game!
     </footer>
