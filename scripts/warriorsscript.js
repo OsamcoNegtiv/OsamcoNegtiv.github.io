@@ -10,19 +10,19 @@ const territories = [{
     name: "Sunningrocks"
     },{
     //1
-    name: "ThunderpathTunnels"
+    name: "Thunderpath Tunnels"
     },{
     //2
-    name: "RiverClanCamp"
+    name: "RiverClan Camp"
     },{
     //3
     name: "Owltree"
     },{
     //4
-    name: "BurntSycamore"
+    name: "Burnt Sycamore"
     },{
     //5
-    name: "ShadowClanCamp"
+    name: "ShadowClan Camp"
     },{
     //6
     name: "Rivers"
@@ -31,25 +31,25 @@ const territories = [{
     name: "Tunnels"
     },{
     //8
-    name: "GorgeSouthBank"
+    name: "GorgeSouth Bank"
     },{
     //9
-    name: "WindClanCamp"
+    name: "WindClan Camp"
     },{
     //10
-    name: "RabbitWarrens"
+    name: "Rabbit Warrens"
     },{
     //11
     name: "Marshes"
     },{
     //12
-    name: "ThunderClanCamp"
+    name: "ThunderClan Camp"
     },{
     //13
     name: "Forest"
     },{
     //14
-    name: "TreecutPlace"
+    name: "Treecut Place"
     },{
     //15
     name: "Carrionplace"
@@ -58,13 +58,13 @@ const territories = [{
     name: "Snakerocks"
     },{
     //17
-    name: "SandyHollow"
+    name: "Sandy Hollow"
     },{
     //18
-    name: "TwolegFarm"
+    name: "Twoleg Farm"
     },{
     //19
-    name: "GorgeNorthBank"
+    name: "Gorge North Bank"
     },{
     //20
     name: "Tallpines"
@@ -202,9 +202,6 @@ function clanvariables() {
     document.getElementById("tc_foodcost").innerHTML = ThunderClan.foodcost;
     document.getElementById("tc_nextmoonfood").innerHTML = ThunderClan.foodgain;
 
-    //RiverClan
-
-
     //ShadowClan
     document.getElementById("sc_food").innerHTML = ShadowClan.food;
     document.getElementById("sc_population").innerHTML = ShadowClan.population;
@@ -212,6 +209,16 @@ function clanvariables() {
     document.getElementById("sc_nextmoonfood").innerHTML = ShadowClan.foodgain;
 
     //WindClan
+    document.getElementById("wc_food").innerHTML = WindClan.food;
+    document.getElementById("wc_population").innerHTML = WindClan.population;
+    document.getElementById("wc_foodcost").innerHTML = WindClan.foodcost;
+    document.getElementById("wc_nextmoonfood").innerHTML = WindClan.foodgain;
+
+    //RiverClan
+    document.getElementById("rc_food").innerHTML = RiverClan.food;
+    document.getElementById("rc_population").innerHTML = RiverClan.population;
+    document.getElementById("rc_foodcost").innerHTML = RiverClan.foodcost;
+    document.getElementById("rc_nextmoonfood").innerHTML = RiverClan.foodgain;
 
 
 }

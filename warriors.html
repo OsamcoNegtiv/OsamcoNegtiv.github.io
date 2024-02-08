@@ -58,10 +58,6 @@
 
       </div>
   <br/>
-      <div id="RiverClan">
-      <h2>RiverClan</h2>
-      </div>
-  <br/>
   <div id="ShadowClan">
       <h2>ShadowClan</h2>
 
@@ -93,7 +89,63 @@
       <br/>
   </div>
   <br/>
-    WindClan
+      <div id="WindClan">
+      <h2>WindClan</h2>
+
+      <button onclick="listmembers(WindClan)">
+          List Members
+      </button>
+      <button onclick="listterritories(WindClan)">
+          List Territories
+      </button>
+      <br/>
+      <button onclick="incrementfood(WindClan,1)">
+          +1 Food
+      </button>
+      <button onclick="incrementmembers(WindClan)">
+          +1 Member
+      </button>
+      <br/>
+      <br/>
+          Members: <span id="wc_population"></span>
+      <br/>
+          Food Cost per Moon: <span id="wc_foodcost"></span>
+      <br/>
+          Food: <span id="wc_food"></span>
+      <br/>
+          Food Gain Next Moon: <span id="wc_nextmoonfood"></span>
+      <h1></h1>
+
+      </div>
+  <br/>
+      <div id="RiverClan">
+      <h2>RiverClan</h2>
+
+      <button onclick="listmembers(RiverClan)">
+          List Members
+      </button>
+      <button onclick="listterritories(RiverClan)">
+          List Territories
+      </button>
+      <br/>
+      <button onclick="incrementfood(RiverClan,1)">
+          +1 Food
+      </button>
+      <button onclick="incrementmembers(RiverClan)">
+          +1 Member
+      </button>
+      <br/>
+      <br/>
+          Members: <span id="rc_population"></span>
+      <br/>
+          Food Cost per Moon: <span id="rc_foodcost"></span>
+      <br/>
+          Food: <span id="rc_food"></span>
+      <br/>
+          Food Gain Next Moon: <span id="rc_nextmoonfood"></span>
+      <h1></h1>
+
+      </div>
   <br/>
     <button onclick="dropdown('devTools')">
       Dev Tools
