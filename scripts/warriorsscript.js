@@ -6,79 +6,79 @@ GameState = {
 //Global Arrays
 const seasons = ["Newleaf","Greenleaf","Leaffall","Leafbare"];
 const territories = [{
-    //1
+    //0
     name: "Sunningrocks"
     },{
-    //2
+    //1
     name: "ThunderpathTunnels"
     },{
-    //3
+    //2
     name: "RiverClanCamp"
     },{
-    //4
+    //3
     name: "Owltree"
     },{
-    //5
+    //4
     name: "BurntSycamore"
     },{
-    //6
+    //5
     name: "ShadowClanCamp"
     },{
-    //7
+    //6
     name: "Rivers"
     },{
-    //8
+    //7
     name: "Tunnels"
     },{
-    //9
+    //8
     name: "GorgeSouthBank"
     },{
-    //10
+    //9
     name: "WindClanCamp"
     },{
-    //11
+    //10
     name: "RabbitWarrens"
     },{
-    //12
+    //11
     name: "Marshes"
     },{
-    //13
+    //12
     name: "ThunderClanCamp"
     },{
-    //14
+    //13
     name: "Forest"
     },{
-    //15
+    //14
     name: "TreecutPlace"
     },{
-    //16
+    //15
     name: "Carrionplace"
     },{
-    //17
+    //16
     name: "Snakerocks"
     },{
-    //18
+    //17
     name: "SandyHollow"
     },{
-    //19
+    //18
     name: "TwolegFarm"
     },{
-    //20
+    //19
     name: "GorgeNorthBank"
     },{
-    //21
+    //20
     name: "Tallpines"
     },{
-    //22
+    //21
     name: "Shallows"
     },{
-    //23
+    //22
     name: "Roadkill"
     },{
-    //24
+    //23
     name: "Highstones"
     },{
-    //25
+    //24
     name: "Riverbed"
     }
 ]
@@ -122,9 +122,9 @@ ThunderClan = {
         prefix: "Blue",
         suffix: "star",
         title: "Leader"
-    }]
+    }],
     territories: [
-        1,2
+        0,1,9,14,3
     ]
 }
 
@@ -136,9 +136,14 @@ ShadowClan = {
         suffix: "star",
         title: "Leader",
         age: 80
-    }]
+    },{
+        prefix: "Lost",
+        suffix: "Leaf",
+        title: "Leader",
+        age: 80
+    }],
     territories: [
-        3,5
+        2,4
     ]
 }
 
@@ -148,6 +153,11 @@ WindClan = {
     {
         prefix: "Tall",
         suffix: "star",
+        title: "Leader",
+        age: 80
+    },{
+        prefix: "Green",
+        suffix: "tail",
         title: "Leader",
         age: 80
     }]
@@ -166,7 +176,7 @@ RiverClan = {
 
 const clans = [ThunderClan,ShadowClan,WindClan,RiverClan];
 
-//Function to update ThunderClan variables
+//Function to update Clan variables
 function clanvariables() {
 //Update variables
 
@@ -175,10 +185,35 @@ function clanvariables() {
         clans[x].foodcost = clans[x].population*2;
     }
 
+    for (let j in clans) {
+        cclan = clans[j];
+        cclan.foodgain = 0;
+        for (let i in cclan.territories) {
+            c = cclan.territories[i];
+            cclan.foodgain += territories[c].leaffall
+        };
+        cclan.foodgain = rounddecimal(cclan.foodgain)
+    }
+
 //Update HTML variables
+    //ThunderClan
     document.getElementById("tc_food").innerHTML = ThunderClan.food;
     document.getElementById("tc_population").innerHTML = ThunderClan.population;
     document.getElementById("tc_foodcost").innerHTML = ThunderClan.foodcost;
+    document.getElementById("tc_nextmoonfood").innerHTML = ThunderClan.foodgain;
+
+    //RiverClan
+
+
+    //ShadowClan
+    document.getElementById("sc_food").innerHTML = ShadowClan.food;
+    document.getElementById("sc_population").innerHTML = ShadowClan.population;
+    document.getElementById("sc_foodcost").innerHTML = ShadowClan.foodcost;
+    document.getElementById("sc_nextmoonfood").innerHTML = ShadowClan.foodgain;
+
+    //WindClan
+
+
 }
 
 //Saving Functions
@@ -196,7 +231,7 @@ function load() {
     ThunderClan = JSON.parse(localStorage.getItem("ThunderClan"));
 
     //Update Variables
-    initialize();
+    updatevariables();
 }
 
 function testtoken() {
@@ -209,13 +244,26 @@ function nextmoon() {
     //General Updates
     GameState.moon++
 
-    //Thunder Clan Updates
+//Thunder Clan Updates
+
+    //Add food from territories
+    for (let i in clans) {
+        incrementfood(clans[i],clans[i].foodgain)
+    }
+
+
+    //Remove Food Cost for Moon
     for (let i in clans) {
         incrementfood(clans[i],-clans[i].foodcost);
-        console.log(clans[i].food)
     }
     //Update Variables
-    initialize();
+    updatevariables();
+
+    //Display Clan info in console
+    for (let i in clans) {
+        console.log(clans[i])
+
+    }
 }
 
 //ThunderClan Functions
@@ -223,19 +271,28 @@ function nextmoon() {
 function listmembers(clan) {
     let membernames = " ";
     for (let x in clan.members) {
-        membernames += clan.members[x].prefix + clan.members[x].suffix + "<br/>"
+        membernames += clan.members[x].prefix + clan.members[x].suffix + "\n"
     }
     alert(membernames)
 }
 
-function incrementfood(clan,amount) {
-    clan.food += amount;
-    initialize();
+function listterritories(clan) {
+    let territorynames = " ";
+    for (let y in clan.territories) {
+        ct = clan.territories[y];
+        territorynames += territories[ct].name + "\n"
+    }
+    alert(territorynames)
 }
 
-function tcincrementmembers() {
+function incrementfood(clan,amount) {
+    clan.food += amount;
+    updatevariables();
+}
+
+function incrementmembers(clan) {
     let new_member = prompt("Give this kit a prefix!")
-    ThunderClan.members.push({
+    clan.members.push({
         prefix: new_member,
         suffix: "kit",
         title: "Kitten"
@@ -259,11 +316,16 @@ function rounddecimal(number) {
 }
 
 function initialize() {
+    populateterritories();
     clanvariables();
-    generalvariables();
-    populateterritories()
+    generalvariables()
+}
+
+function updatevariables() {
+    clanvariables();
+    generalvariables()
 }
 
 function testarray() {
-    alert(territories[1].newleaf)
+    alert(ThunderClan.foodgain)
 }

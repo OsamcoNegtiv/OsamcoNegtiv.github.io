@@ -35,27 +35,63 @@
       <button onclick="listmembers(ThunderClan)">
           List Members
       </button>
+      <button onclick="listterritories(ThunderClan)">
+          List Territories
+      </button>
       <br/>
       <button onclick="incrementfood(ThunderClan,1)">
           +1 Food
       </button>
-      <button onclick="tcincrementmembers()">
+      <button onclick="incrementmembers(ThunderClan)">
           +1 Member
       </button>
       <br/>
       <br/>
           Members: <span id="tc_population"></span>
       <br/>
-          Food per Tick: <span id="tc_foodcost"></span>
+          Food Cost per Moon: <span id="tc_foodcost"></span>
       <br/>
           Food: <span id="tc_food"></span>
+      <br/>
+          Food Gain Next Moon: <span id="tc_nextmoonfood"></span>
       <h1></h1>
 
       </div>
   <br/>
-    RiverClan
+      <div id="RiverClan">
+      <h2>RiverClan</h2>
+      </div>
   <br/>
-    ShadowClan
+  <div id="ShadowClan">
+      <h2>ShadowClan</h2>
+
+      <button onclick="listmembers(ShadowClan)">
+          List Members
+      </button>
+      <button onclick="listterritories(ShadowClan)">
+          List Territories
+      </button>
+      <br/>
+      <button onclick="incrementfood(ShadowClan,1)">
+          +1 Food
+      </button>
+      <button onclick="incrementmembers(ShadowClan)">
+          +1 Member
+      </button>
+      <br/>
+      <br/>
+          Members: <span id="sc_population"></span>
+      <br/>
+          Food Cost per Moon: <span id="sc_foodcost"></span>
+      <br/>
+          Food: <span id="sc_food"></span>
+      <br/>
+          Food Gain Next Moon: <span id="sc_nextmoonfood"></span>
+      <h1></h1>
+
+
+      <br/>
+  </div>
   <br/>
     WindClan
   <br/>
@@ -68,6 +104,9 @@
       </button>
       <button onclick="testarray()">
         Test Array
+      </button>
+      <button onclick="updatevariables()">
+        Update Variables
       </button>
     </div>
     </main>

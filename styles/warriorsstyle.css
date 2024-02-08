@@ -27,6 +27,30 @@ span {
   margin: 0;
 }
 
+#RiverClan {
+  width: auto;
+  height: auto;
+  padding: 50px;
+  border: 5px solid Blue;
+  margin: 0;
+}
+
+#ShadowClan {
+  width: auto;
+  height: auto;
+  padding: 50px;
+  border: 5px solid Black;
+  margin: 0;
+}
+
+#WindClan {
+  width: auto;
+  height: auto;
+  padding: 50px;
+  border: 5px solid Green;
+  margin: 0;
+}
+
 #Gen {
   width: auto;
   height: auto;
