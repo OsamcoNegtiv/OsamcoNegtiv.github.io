@@ -6,54 +6,79 @@ GameState = {
 //Global Arrays
 const seasons = ["Newleaf","Greenleaf","Leaffall","Leafbare"];
 const territories = [{
+    //1
     name: "Sunningrocks"
     },{
+    //2
     name: "ThunderpathTunnels"
     },{
+    //3
     name: "RiverClanCamp"
     },{
+    //4
     name: "Owltree"
     },{
+    //5
     name: "BurntSycamore"
     },{
+    //6
     name: "ShadowClanCamp"
     },{
+    //7
     name: "Rivers"
     },{
+    //8
     name: "Tunnels"
     },{
+    //9
     name: "GorgeSouthBank"
     },{
+    //10
     name: "WindClanCamp"
     },{
+    //11
     name: "RabbitWarrens"
     },{
+    //12
     name: "Marshes"
     },{
+    //13
     name: "ThunderClanCamp"
     },{
+    //14
     name: "Forest"
     },{
+    //15
     name: "TreecutPlace"
     },{
+    //16
     name: "Carrionplace"
     },{
+    //17
     name: "Snakerocks"
     },{
+    //18
     name: "SandyHollow"
     },{
+    //19
     name: "TwolegFarm"
     },{
+    //20
     name: "GorgeNorthBank"
     },{
+    //21
     name: "Tallpines"
     },{
+    //22
     name: "Shallows"
     },{
+    //23
     name: "Roadkill"
     },{
+    //24
     name: "Highstones"
     },{
+    //25
     name: "Riverbed"
     }
 ]
@@ -98,6 +123,9 @@ ThunderClan = {
         suffix: "star",
         title: "Leader"
     }]
+    territories: [
+        1,2
+    ]
 }
 
 ShadowClan = {
@@ -109,6 +137,9 @@ ShadowClan = {
         title: "Leader",
         age: 80
     }]
+    territories: [
+        3,5
+    ]
 }
 
 WindClan = {
@@ -192,7 +223,7 @@ function nextmoon() {
 function listmembers(clan) {
     let membernames = " ";
     for (let x in clan.members) {
-        membernames += clan.members[x].prefix + clan.members[x].suffix + ", "
+        membernames += clan.members[x].prefix + clan.members[x].suffix + "<br/>"
     }
     alert(membernames)
 }
