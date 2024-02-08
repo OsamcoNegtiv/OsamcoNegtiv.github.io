@@ -201,6 +201,7 @@ function clanvariables() {
     document.getElementById("tc_population").innerHTML = ThunderClan.population;
     document.getElementById("tc_foodcost").innerHTML = ThunderClan.foodcost;
     document.getElementById("tc_nextmoonfood").innerHTML = ThunderClan.foodgain;
+    document.getElementById("all_territories").innerHTML = listallterritories();
 
     //ShadowClan
     document.getElementById("sc_food").innerHTML = ShadowClan.food;
@@ -289,7 +290,15 @@ function listterritories(clan) {
         ct = clan.territories[y];
         territorynames += territories[ct].name + "\n"
     }
-    alert(territorynames)
+    return(territorynames)
+}
+
+function listallterritories() {
+    let territorynames = " ";
+    for (let y in territories) {
+        territorynames += "<pre/>" +  territories[y].name + "<br/>  Newleaf: " + territories[y].newleaf + "<br/>  Greenleaf: " + territories[y].greenleaf + "<br/>  Leaffall: " + territories[y].leaffall + "<br/>  Leafbare: " + territories[y].leafbare + "<br/>"
+    }
+    return(territorynames)
 }
 
 function incrementfood(clan,amount) {
@@ -310,10 +319,10 @@ function incrementmembers(clan) {
 //Non-game functions
 function dropdown(id) {
     let x = document.getElementById(id);
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
+  if (x.style.display === "block") {
     x.style.display = "none";
+  } else {
+    x.style.display = "block";
   }
 }
 
