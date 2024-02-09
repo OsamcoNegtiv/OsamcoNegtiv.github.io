@@ -306,11 +306,6 @@ function load() {
     updatevariables();
 }
 
-function testtoken() {
-    console.log(localStorage.getItem("GameState"));
-    console.log(localStorage.getItem("ThunderClan"));
-}
-
 //General Functions
 function nextmoon() {
     //General Updates
@@ -377,7 +372,8 @@ function incrementmembers(clan) {
     clan.members.push({
         prefix: new_member,
         suffix: "kit",
-        title: "Kitten"
+        title: "Kitten",
+        birthmoon: GameState.moon
     });
     clanvariables();
 }
@@ -408,7 +404,13 @@ function updatevariables() {
     generalvariables();
 }
 
-let testvariable = 1;
+function testtoken() {
+    console.log(localStorage.getItem("GameState"));
+    console.log(localStorage.getItem("ThunderClan"));
+    console.log(localStorage.getItem("ShadowClan"));
+    console.log(localStorage.getItem("WindClan"));
+    console.log(localStorage.getItem("RiverClan"));
+}
 
 function testarray() {
     console.log(GameState)
