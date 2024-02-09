@@ -77,7 +77,7 @@ GameState = {
     //24
     name: "Riverbed"
     }],
-    version: "0.5.2"
+    version: "0.5.3"
 };
 
 //Global Arrays
@@ -344,7 +344,7 @@ function nextmoon() {
 function listmembers(clan) {
     let membernames = " ";
     for (let x in clan.members) {
-        membernames += "<pre/>" + clan.members[x].prefix + clan.members[x].suffix + "<br/>  Age: " + (GameState.moon - clan.members[x].birthmoon)
+        membernames += "<pre/>" + clan.members[x].prefix + clan.members[x].suffix +"<br/>  Title: " + clan.members[x].title + "<br/>  Age: " + (GameState.moon - clan.members[x].birthmoon)
     };
     return(membernames)
 }
