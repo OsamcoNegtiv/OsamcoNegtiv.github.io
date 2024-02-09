@@ -30,7 +30,7 @@
         <button onclick="dropdown('territories')">
           Territories
         </button>
-        <div id="territories">
+        <div class="dropdown" id="territories">
           <span id="all_territories"></span>
         </div>
 
@@ -39,12 +39,18 @@
       <div id="ThunderClan">
       <h2>ThunderClan</h2>
 
-      <button onclick="listmembers(ThunderClan)">
-          List Members
+      <button onclick="dropdown('thunderclanmembers')">
+          List Members (<span id="tc_population"></span>)
       </button>
-      <button onclick="listterritories(ThunderClan)">
-          List Territories
+      <button onclick="dropdown('thunderclanterritories')">
+          List Territories (<span id="tc_territorycount"></span>)
       </button>
+        <div class="dropdown" id="thunderclanmembers">
+          <span id="tc_members"></span>
+        </div>
+        <div class="dropdown" id="thunderclanterritories">
+          <span id="tc_territories"></span>
+        </div>
       <br/>
       <button onclick="incrementfood(ThunderClan,1)">
           +1 Food
@@ -54,13 +60,13 @@
       </button>
       <br/>
       <br/>
-          Members: <span id="tc_population"></span>
+          Food: <span id="tc_food"></span>
       <br/>
           Food Cost per Moon: <span id="tc_foodcost"></span>
       <br/>
-          Food: <span id="tc_food"></span>
+          Food Gain Next Moon: <span id="tc_foodgain"></span>
       <br/>
-          Food Gain Next Moon: <span id="tc_nextmoonfood"></span>
+          Food Change Next Moon: <span id="tc_foodchange"></span>
       <h1></h1>
 
       </div>
@@ -68,12 +74,18 @@
   <div id="ShadowClan">
       <h2>ShadowClan</h2>
 
-      <button onclick="listmembers(ShadowClan)">
-          List Members
+      <button onclick="dropdown('shadowclanmembers')">
+          List Members (<span id="sc_population"></span>)
       </button>
-      <button onclick="listterritories(ShadowClan)">
-          List Territories
+      <button onclick="dropdown('shadowclanterritories')">
+          List Territories (<span id="sc_territorycount"></span>)
       </button>
+        <div class="dropdown" id="shadowclanmembers">
+          <span id="sc_members"></span>
+        </div>
+        <div class="dropdown" id="shadowclanterritories">
+          <span id="sc_territories"></span>
+        </div>
       <br/>
       <button onclick="incrementfood(ShadowClan,1)">
           +1 Food
@@ -83,13 +95,13 @@
       </button>
       <br/>
       <br/>
-          Members: <span id="sc_population"></span>
+          Food: <span id="sc_food"></span>
       <br/>
           Food Cost per Moon: <span id="sc_foodcost"></span>
       <br/>
-          Food: <span id="sc_food"></span>
+          Food Gain Next Moon: <span id="sc_foodgain"></span>
       <br/>
-          Food Gain Next Moon: <span id="sc_nextmoonfood"></span>
+          Food Change Next Moon: <span id="sc_foodchange"></span>
       <h1></h1>
 
 
@@ -99,12 +111,18 @@
       <div id="WindClan">
       <h2>WindClan</h2>
 
-      <button onclick="listmembers(WindClan)">
-          List Members
+      <button onclick="dropdown('windclanmembers')">
+          List Members (<span id="wc_population"></span>)
       </button>
-      <button onclick="listterritories(WindClan)">
-          List Territories
+      <button onclick="dropdown('windclanterritories')">
+          List Territories (<span id="wc_territorycount"></span>)
       </button>
+        <div class="dropdown" id="windclanmembers">
+          <span id="wc_members"></span>
+        </div>
+        <div class="dropdown" id="windclanterritories">
+          <span id="wc_territories"></span>
+        </div>
       <br/>
       <button onclick="incrementfood(WindClan,1)">
           +1 Food
@@ -114,13 +132,13 @@
       </button>
       <br/>
       <br/>
-          Members: <span id="wc_population"></span>
+          Food: <span id="wc_food"></span>
       <br/>
           Food Cost per Moon: <span id="wc_foodcost"></span>
       <br/>
-          Food: <span id="wc_food"></span>
+          Food Gain Next Moon: <span id="wc_foodgain"></span>
       <br/>
-          Food Gain Next Moon: <span id="wc_nextmoonfood"></span>
+          Food Change Next Moon: <span id="wc_foodchange"></span>
       <h1></h1>
 
       </div>
@@ -128,12 +146,18 @@
       <div id="RiverClan">
       <h2>RiverClan</h2>
 
-      <button onclick="listmembers(RiverClan)">
-          List Members
+      <button onclick="dropdown('riverclanmembers')">
+          List Members (<span id="rc_population"></span>)
       </button>
-      <button onclick="listterritories(RiverClan)">
-          List Territories
+      <button onclick="dropdown('riverclanterritories')">
+          List Territories (<span id="rc_territorycount"></span>)
       </button>
+        <div class="dropdown" id="riverclanmembers">
+          <span id="rc_members"></span>
+        </div>
+        <div class="dropdown" id="riverclanterritories">
+          <span id="rc_territories"></span>
+        </div>
       <br/>
       <button onclick="incrementfood(RiverClan,1)">
           +1 Food
@@ -143,13 +167,13 @@
       </button>
       <br/>
       <br/>
-          Members: <span id="rc_population"></span>
+          Food: <span id="rc_food"></span>
       <br/>
           Food Cost per Moon: <span id="rc_foodcost"></span>
       <br/>
-          Food: <span id="rc_food"></span>
+          Food Gain Next Moon: <span id="rc_foodgain"></span>
       <br/>
-          Food Gain Next Moon: <span id="rc_nextmoonfood"></span>
+          Food Change Next Moon: <span id="rc_foodchange"></span>
       <h1></h1>
 
       </div>
@@ -157,7 +181,7 @@
     <button onclick="dropdown('devTools')">
       Dev Tools
     </button>
-    <div id="devTools">
+    <div class="dropdown" id="devTools">
       <button onclick="testtoken()">
         Test Save
       </button>
@@ -170,7 +194,7 @@
     </div>
     </main>
     <footer>
-    Version Alpha 0.3.2
+    Version Alpha <span id="version"></span>
     <br/>
     Thanks to Evan for the original version of this game!
     </footer>

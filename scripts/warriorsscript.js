@@ -1,11 +1,7 @@
 //Set Gamestate
 GameState = {
-    moon: 0
-};
-
-//Global Arrays
-const seasons = ["Newleaf","Greenleaf","Leaffall","Leafbare"];
-const territories = [{
+    moon: 0,
+    territories: [{
     //0
     name: "Sunningrocks"
     },{
@@ -31,7 +27,7 @@ const territories = [{
     name: "Tunnels"
     },{
     //8
-    name: "GorgeSouth Bank"
+    name: "Gorge South Bank"
     },{
     //9
     name: "WindClan Camp"
@@ -80,15 +76,35 @@ const territories = [{
     },{
     //24
     name: "Riverbed"
-    }
-]
+    }],
+    version: "0.5.2"
+};
+
+//Global Arrays
+const seasons = ["Newleaf","Greenleaf","Leaffall","Leafbare"];
 
 function populateterritories() {
-    for (let x in territories) {
-            territories[x].newleaf = rounddecimal(Math.random());
-            territories[x].greenleaf = rounddecimal(Math.random() * 1.2);
-            territories[x].leaffall = rounddecimal(Math.random() * 0.8);
-            territories[x].leafbare = rounddecimal(Math.random() * 0.4)
+    for (let x in GameState.territories) {
+            GameState.territories[x].newleaf = rounddecimal((Math.random()+0.3));
+            GameState.territories[x].greenleaf = rounddecimal((Math.random()+0.5)*1.2);
+            GameState.territories[x].leaffall = rounddecimal((Math.random()+0.2)*0.8);
+            GameState.territories[x].leafbare = rounddecimal((Math.random())*0.4)
+    }
+}
+
+function territoryowners() {
+    for (let x in GameState.territories) {
+        if (ThunderClan.territories.includes(Math.round(x))) {
+            GameState.territories[x].owner = "ThunderClan"
+        } else if (ShadowClan.territories.includes(Math.round(x))) {
+            GameState.territories[x].owner = "ShadowClan"
+        } else if (WindClan.territories.includes(Math.round(x))) {
+            GameState.territories[x].owner = "WindClan"
+        } else if (RiverClan.territories.includes(Math.round(x))) {
+            GameState.territories[x].owner = "RiverClan"
+        } else  {
+            GameState.territories[x].owner = "Unowned";
+        }
     }
 }
 
@@ -100,6 +116,8 @@ GameState.season = seasons[0];
 function generalvariables() {
     document.getElementById("moon").innerHTML = GameState.moon;
     document.getElementById("season").innerHTML = GameState.season;
+    document.getElementById("all_territories").innerHTML = listallterritories();
+    document.getElementById("version").innerHTML = GameState.version;
 }
 
 
@@ -113,18 +131,20 @@ ThunderClan = {
         prefix: "Fire",
         suffix: "paw",
         title: "Apprentice",
-        age: 80
+        birthmoon: -15
     },{
         prefix: "Tiger",
         suffix: "claw",
-        title: "Warrior"
+        title: "Warrior",
+        birthmoon: -45
     },{
         prefix: "Blue",
         suffix: "star",
-        title: "Leader"
+        title: "Leader",
+        birthmoon: -80
     }],
     territories: [
-        0,1,9,14,3
+        0,3,12,14,16,17,20
     ]
 }
 
@@ -135,15 +155,15 @@ ShadowClan = {
         prefix: "Broken",
         suffix: "star",
         title: "Leader",
-        age: 80
+        birthmoon: -80
     },{
-        prefix: "Lost",
-        suffix: "Leaf",
-        title: "Leader",
-        age: 80
+        prefix: "Black",
+        suffix: "foot",
+        title: "Deputy",
+        birthmoon: -75
     }],
     territories: [
-        2,4
+        1,4,5,11,15,22
     ]
 }
 
@@ -154,13 +174,16 @@ WindClan = {
         prefix: "Tall",
         suffix: "star",
         title: "Leader",
-        age: 80
+        birthmoon: -80
     },{
         prefix: "Green",
         suffix: "tail",
-        title: "Leader",
-        age: 80
-    }]
+        title: "Deputy",
+        birthmoon: -34
+    }],
+    territories: [
+        7,9,10,18,19,23
+    ]
 }
 
 RiverClan = {
@@ -170,8 +193,11 @@ RiverClan = {
         prefix: "Crooked",
         suffix: "star",
         title: "Leader",
-        age: 80
-    }]
+        birthmoon: -80
+    }],
+    territories: [
+        2,6,8,13,21,24
+    ]
 }
 
 const clans = [ThunderClan,ShadowClan,WindClan,RiverClan];
@@ -180,19 +206,31 @@ const clans = [ThunderClan,ShadowClan,WindClan,RiverClan];
 function clanvariables() {
 //Update variables
 
+    //Update Foodcost based on pupulation
     for (let x in clans) {
         clans[x].population = clans[x].members.length;
-        clans[x].foodcost = clans[x].population*2;
+        clans[x].foodcost = clans[x].population*-2;
+    }
+    //Update territory count
+    for (let x in clans) {
+        clans[x].territorycount = clans[x].territories.length;
     }
 
+    //Update foodgain based on territories
     for (let j in clans) {
         cclan = clans[j];
         cclan.foodgain = 0;
         for (let i in cclan.territories) {
             c = cclan.territories[i];
-            cclan.foodgain += territories[c].leaffall
+            cclan.foodgain += GameState.territories[c].leaffall
         };
         cclan.foodgain = rounddecimal(cclan.foodgain)
+    }
+
+    //Set the amount of food that the total will change by, not counting food decay
+    for (let j in clans) {
+        cclan = clans[j];
+        cclan.foodchange = rounddecimal(cclan.foodgain + cclan.foodcost);
     }
 
 //Update HTML variables
@@ -200,26 +238,41 @@ function clanvariables() {
     document.getElementById("tc_food").innerHTML = ThunderClan.food;
     document.getElementById("tc_population").innerHTML = ThunderClan.population;
     document.getElementById("tc_foodcost").innerHTML = ThunderClan.foodcost;
-    document.getElementById("tc_nextmoonfood").innerHTML = ThunderClan.foodgain;
-    document.getElementById("all_territories").innerHTML = listallterritories();
+    document.getElementById("tc_foodgain").innerHTML = ThunderClan.foodgain;
+    document.getElementById("tc_foodchange").innerHTML = ThunderClan.foodchange;
+    document.getElementById("tc_territorycount").innerHTML = ThunderClan.territorycount;
+    document.getElementById("tc_territories").innerHTML = listterritories(ThunderClan);
+    document.getElementById("tc_members").innerHTML = listmembers(ThunderClan);
 
     //ShadowClan
     document.getElementById("sc_food").innerHTML = ShadowClan.food;
     document.getElementById("sc_population").innerHTML = ShadowClan.population;
     document.getElementById("sc_foodcost").innerHTML = ShadowClan.foodcost;
-    document.getElementById("sc_nextmoonfood").innerHTML = ShadowClan.foodgain;
+    document.getElementById("sc_foodgain").innerHTML = ShadowClan.foodgain;
+    document.getElementById("sc_foodchange").innerHTML = ShadowClan.foodchange;
+    document.getElementById("sc_territorycount").innerHTML = ShadowClan.territorycount;
+    document.getElementById("sc_territories").innerHTML = listterritories(ShadowClan);
+    document.getElementById("sc_members").innerHTML = listmembers(ShadowClan);
 
     //WindClan
     document.getElementById("wc_food").innerHTML = WindClan.food;
     document.getElementById("wc_population").innerHTML = WindClan.population;
     document.getElementById("wc_foodcost").innerHTML = WindClan.foodcost;
-    document.getElementById("wc_nextmoonfood").innerHTML = WindClan.foodgain;
+    document.getElementById("wc_foodgain").innerHTML = WindClan.foodgain;
+    document.getElementById("wc_foodchange").innerHTML = WindClan.foodchange;
+    document.getElementById("wc_territorycount").innerHTML = WindClan.territorycount;
+    document.getElementById("wc_territories").innerHTML = listterritories(WindClan);
+    document.getElementById("wc_members").innerHTML = listmembers(WindClan);
 
     //RiverClan
     document.getElementById("rc_food").innerHTML = RiverClan.food;
     document.getElementById("rc_population").innerHTML = RiverClan.population;
     document.getElementById("rc_foodcost").innerHTML = RiverClan.foodcost;
-    document.getElementById("rc_nextmoonfood").innerHTML = RiverClan.foodgain;
+    document.getElementById("rc_foodgain").innerHTML = RiverClan.foodgain;
+    document.getElementById("rc_foodchange").innerHTML = RiverClan.foodchange;
+    document.getElementById("rc_territorycount").innerHTML = RiverClan.territorycount;
+    document.getElementById("rc_territories").innerHTML = listterritories(RiverClan);
+    document.getElementById("rc_members").innerHTML = listmembers(RiverClan);
 
 
 }
@@ -231,12 +284,23 @@ function save() {
 
     //save ThunderClan variables
     localStorage.setItem("ThunderClan", JSON.stringify(ThunderClan));
+    localStorage.setItem("ShadowClan", JSON.stringify(ShadowClan));
+    localStorage.setItem("WindClan", JSON.stringify(WindClan));
+    localStorage.setItem("RiverClan", JSON.stringify(RiverClan));
 }
 
 function load() {
     //load States
-    GameState = JSON.parse(localStorage.getItem("GameState"));
-    ThunderClan = JSON.parse(localStorage.getItem("ThunderClan"));
+    GameStateNew = JSON.parse(localStorage.getItem("GameState"));
+    if (GameStateNew.version === GameState.version) {
+        ThunderClan = JSON.parse(localStorage.getItem("ThunderClan"));
+        ShadowClan = JSON.parse(localStorage.getItem("ShadowClan"));
+        WindClan = JSON.parse(localStorage.getItem("WindClan"));
+        RiverClan = JSON.parse(localStorage.getItem("RiverClan"));
+        GameState = GameStateNew;
+    } else {
+        alert("Game Version mismatch! Cannot load save!")
+    }
 
     //Update Variables
     updatevariables();
@@ -256,14 +320,15 @@ function nextmoon() {
 
     //Add food from territories
     for (let i in clans) {
-        incrementfood(clans[i],clans[i].foodgain)
+        incrementfood(clans[i],clans[i].foodchange)
     }
 
-
-    //Remove Food Cost for Moon
-    for (let i in clans) {
-        incrementfood(clans[i],-clans[i].foodcost);
+    //Food Decay
+    for (let j in clans) {
+        cclan = clans[j];
+        cclan.food = rounddecimal(cclan.food/2)
     }
+
     //Update Variables
     updatevariables();
 
@@ -279,30 +344,31 @@ function nextmoon() {
 function listmembers(clan) {
     let membernames = " ";
     for (let x in clan.members) {
-        membernames += clan.members[x].prefix + clan.members[x].suffix + "\n"
-    }
-    alert(membernames)
+        membernames += "<pre/>" + clan.members[x].prefix + clan.members[x].suffix + "<br/>  Age: " + (GameState.moon - clan.members[x].birthmoon)
+    };
+    return(membernames)
 }
 
 function listterritories(clan) {
     let territorynames = " ";
     for (let y in clan.territories) {
         ct = clan.territories[y];
-        territorynames += territories[ct].name + "\n"
+        territorynames += "<pre/>" + ct + ". " + GameState.territories[ct].name + "<br/>  Owned By: " + GameState.territories[ct].owner + "<br/>  Newleaf: " + GameState.territories[ct].newleaf + "<br/>  Greenleaf: " + GameState.territories[ct].greenleaf + "<br/>  Leaffall: " + GameState.territories[ct].leaffall + "<br/>  Leafbare: " + GameState.territories[ct].leafbare + "<br/>"
     }
     return(territorynames)
 }
 
 function listallterritories() {
     let territorynames = " ";
-    for (let y in territories) {
-        territorynames += "<pre/>" +  territories[y].name + "<br/>  Newleaf: " + territories[y].newleaf + "<br/>  Greenleaf: " + territories[y].greenleaf + "<br/>  Leaffall: " + territories[y].leaffall + "<br/>  Leafbare: " + territories[y].leafbare + "<br/>"
+    for (let y in GameState.territories) {
+        territorynames += "<pre/>" + y + ". " + GameState.territories[y].name + "<br/>  Owned By: " + GameState.territories[y].owner + "<br/>  Newleaf: " + GameState.territories[y].newleaf + "<br/>  Greenleaf: " + GameState.territories[y].greenleaf + "<br/>  Leaffall: " + GameState.territories[y].leaffall + "<br/>  Leafbare: " + GameState.territories[y].leafbare + "<br/>"
     }
     return(territorynames)
 }
 
 function incrementfood(clan,amount) {
     clan.food += amount;
+    clan.food = rounddecimal(clan.food)
     updatevariables();
 }
 
@@ -333,15 +399,17 @@ function rounddecimal(number) {
 
 function initialize() {
     populateterritories();
-    clanvariables();
-    generalvariables()
+    updatevariables()
 }
 
 function updatevariables() {
+    territoryowners();
     clanvariables();
-    generalvariables()
+    generalvariables();
 }
 
+let testvariable = 1;
+
 function testarray() {
-    alert(ThunderClan.foodgain)
+    console.log(GameState)
 }

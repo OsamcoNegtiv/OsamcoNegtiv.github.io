@@ -19,6 +19,12 @@ span {
   color: white;
 }
 
+button {
+  span {
+    color: black;
+  }
+}
+
 #ThunderClan {
   width: auto;
   height: auto;
@@ -59,11 +65,7 @@ span {
   margin: 0;
 }
 
-#devTools {
-  display: none;
-}
-
-#territories {
+.dropdown {
   display: none;
 }
 
