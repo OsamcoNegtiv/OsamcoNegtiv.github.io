@@ -1,6 +1,8 @@
 //Set Gamestate
 GameState = {
     moon: 0,
+    seasonnumber: 0,
+    season: "Newleaf",
     territories: [{
     //0
     name: "Sunningrocks"
@@ -85,10 +87,11 @@ const seasons = ["Newleaf","Greenleaf","Leaffall","Leafbare"];
 
 function populateterritories() {
     for (let x in GameState.territories) {
-            GameState.territories[x].newleaf = rounddecimal((Math.random()+0.3));
-            GameState.territories[x].greenleaf = rounddecimal((Math.random()+0.5)*1.2);
-            GameState.territories[x].leaffall = rounddecimal((Math.random()+0.2)*0.8);
-            GameState.territories[x].leafbare = rounddecimal((Math.random())*0.4)
+            GameState.territories[x].yield = {};
+            GameState.territories[x].yield.Newleaf = rounddecimal((Math.random()+0.3));
+            GameState.territories[x].yield.Greenleaf = rounddecimal((Math.random()+0.5)*1.2);
+            GameState.territories[x].yield.Leaffall = rounddecimal((Math.random()+0.2)*0.8);
+            GameState.territories[x].yield.Leafbare = rounddecimal((Math.random())*0.4)
     }
 }
 
@@ -102,7 +105,7 @@ function territoryowners() {
             GameState.territories[x].owner = "WindClan"
         } else if (RiverClan.territories.includes(Math.round(x))) {
             GameState.territories[x].owner = "RiverClan"
-        } else  {
+        } else {
             GameState.territories[x].owner = "Unowned";
         }
     }
@@ -110,7 +113,6 @@ function territoryowners() {
 
 
 //General Variables
-GameState.season = seasons[0];
 
 //Function to update general variables
 function generalvariables() {
@@ -206,30 +208,27 @@ const clans = [ThunderClan,ShadowClan,WindClan,RiverClan];
 function clanvariables() {
 //Update variables
 
-    //Update Foodcost based on pupulation
-    for (let x in clans) {
-        clans[x].population = clans[x].members.length;
-        clans[x].foodcost = clans[x].population*-2;
-    }
     //Update territory count
     for (let x in clans) {
         clans[x].territorycount = clans[x].territories.length;
-    }
 
-    //Update foodgain based on territories
-    for (let j in clans) {
-        cclan = clans[j];
+        //Update Foodcost based on pupulation
+        clans[x].population = clans[x].members.length;
+        clans[x].foodcost = clans[x].population*-2;
+
+        //Update foodgain based on territories
+        cclan = clans[x];
         cclan.foodgain = 0;
+        cseason = GameState.season;
         for (let i in cclan.territories) {
             c = cclan.territories[i];
-            cclan.foodgain += GameState.territories[c].leaffall
+            cseason = GameState.season;
+            cclan.foodgain += GameState.territories[c].yield[cseason]
         };
         cclan.foodgain = rounddecimal(cclan.foodgain)
-    }
 
-    //Set the amount of food that the total will change by, not counting food decay
-    for (let j in clans) {
-        cclan = clans[j];
+        //Set the amount of food that the total will change by, not counting food decay
+        cclan = clans[x];
         cclan.foodchange = rounddecimal(cclan.foodgain + cclan.foodcost);
     }
 
@@ -311,27 +310,31 @@ function nextmoon() {
     //General Updates
     GameState.moon++
 
-//Thunder Clan Updates
+    //Season Logic
+    if (GameState.moon % 3 === 0) {
+        GameState.seasonnumber++
+        if (GameState.seasonnumber < 4) {
+            GameState.season = seasons[GameState.seasonnumber]
+        } else {
+            GameState.season = seasons[0];
+            GameState.seasonnumber = 0
+        }
+    }
 
-    //Add food from territories
+//Clan Updates
     for (let i in clans) {
-        incrementfood(clans[i],clans[i].foodchange)
-    }
 
-    //Food Decay
-    for (let j in clans) {
-        cclan = clans[j];
+        //Food Decay
+        cclan = clans[i];
         cclan.food = rounddecimal(cclan.food/2)
-    }
+
+        //Add food from territories
+        incrementfood(clans[i],clans[i].foodchange)
+
+    };
 
     //Update Variables
     updatevariables();
-
-    //Display Clan info in console
-    for (let i in clans) {
-        console.log(clans[i])
-
-    }
 }
 
 //ThunderClan Functions
@@ -348,7 +351,13 @@ function listterritories(clan) {
     let territorynames = " ";
     for (let y in clan.territories) {
         ct = clan.territories[y];
-        territorynames += "<pre/>" + ct + ". " + GameState.territories[ct].name + "<br/>  Owned By: " + GameState.territories[ct].owner + "<br/>  Newleaf: " + GameState.territories[ct].newleaf + "<br/>  Greenleaf: " + GameState.territories[ct].greenleaf + "<br/>  Leaffall: " + GameState.territories[ct].leaffall + "<br/>  Leafbare: " + GameState.territories[ct].leafbare + "<br/>"
+        territorynames += "<pre/>" + ct + ". " + GameState.territories[ct].name +
+        "<br/>  Owned By: " + GameState.territories[ct].owner +
+        "<br/>  Newleaf: " + GameState.territories[ct].yield.Newleaf +
+        "<br/>  Greenleaf: " + GameState.territories[ct].yield.Greenleaf +
+        "<br/>  Leaffall: " + GameState.territories[ct].yield.Leaffall +
+        "<br/>  Leafbare: " + GameState.territories[ct].yield.Leafbare +
+        "<br/>"
     }
     return(territorynames)
 }
@@ -356,7 +365,13 @@ function listterritories(clan) {
 function listallterritories() {
     let territorynames = " ";
     for (let y in GameState.territories) {
-        territorynames += "<pre/>" + y + ". " + GameState.territories[y].name + "<br/>  Owned By: " + GameState.territories[y].owner + "<br/>  Newleaf: " + GameState.territories[y].newleaf + "<br/>  Greenleaf: " + GameState.territories[y].greenleaf + "<br/>  Leaffall: " + GameState.territories[y].leaffall + "<br/>  Leafbare: " + GameState.territories[y].leafbare + "<br/>"
+        territorynames += "<pre/>" + y + ". " + GameState.territories[y].name +
+        "<br/>  Owned By: " + GameState.territories[y].owner +
+        "<br/>  Newleaf: " + GameState.territories[y].yield.Newleaf +
+        "<br/>  Greenleaf: " + GameState.territories[y].yield.Greenleaf +
+        "<br/>  Leaffall: " + GameState.territories[y].yield.Leaffall +
+        "<br/>  Leafbare: " + GameState.territories[y].yield.Leafbare +
+        "<br/>"
     }
     return(territorynames)
 }
@@ -368,14 +383,64 @@ function incrementfood(clan,amount) {
 }
 
 function incrementmembers(clan) {
-    let new_member = prompt("Give this kit a prefix!")
-    clan.members.push({
-        prefix: new_member,
-        suffix: "kit",
-        title: "Kitten",
-        birthmoon: GameState.moon
-    });
-    clanvariables();
+    let new_member = prompt("Give this kit a prefix!");
+    conflict = false;
+    for (let i in clan.members) {
+        if (clan.members[i].prefix === new_member) {
+            conflict = true;
+        }
+    }
+    if (conflict === true) {
+        alert("Sorry, that prefix is already taken!");
+        incrementmembers(clan)
+    } else {
+        clan.members.push({
+            prefix: new_member,
+            suffix: "kit",
+            title: "Kitten",
+            birthmoon: GameState.moon
+        });
+        updatevariables();
+    }
+}
+
+
+
+//function for changing a cat's title, such as kit to paw, or becoming star when becoming leader.
+function changetitle(clan,prefix,newsuffix,newtitle) {
+    ccat = findcatnumber(clan,prefix);
+    clan.members[ccat].suffix = newsuffix;
+    clan.members[ccat].title = newtitle;
+    updatevariables();
+}
+
+//Obtain catnumber from prefix
+function findcatnumber(clan,prefix) {
+    let conflict = false;
+    for (let i in clan.members) {
+        if (clan.members[i].prefix === prefix) {
+            conflict = true;
+            catnum = i
+        }
+    }
+    if (conflict === true) {
+        return catnum;
+    } else {
+        alert("No cat by that prefix! Did you misspell it?");
+    }
+}
+
+//Kill cat
+function killcat(clan,prefix) {
+    cnum = findcatnumber(clan,prefix);
+    clan.members.splice(cnum,1);
+    updatevariables()
+}
+
+//Generate a random member in the clan.
+function randommember(clan) {
+    let x = Math.floor(Math.random()*clan.population+1)
+    return(x)
 }
 
 //Non-game functions
@@ -395,7 +460,9 @@ function rounddecimal(number) {
 
 function initialize() {
     populateterritories();
-    updatevariables()
+    updatevariables();
+    GameState.season = seasons[0];
+    GameState.seasonnumber = 0;
 }
 
 function updatevariables() {
@@ -404,7 +471,8 @@ function updatevariables() {
     generalvariables();
 }
 
-function testtoken() {
+//Output the save data straight from localStorage
+function testsave() {
     console.log(localStorage.getItem("GameState"));
     console.log(localStorage.getItem("ThunderClan"));
     console.log(localStorage.getItem("ShadowClan"));
@@ -412,6 +480,23 @@ function testtoken() {
     console.log(localStorage.getItem("RiverClan"));
 }
 
-function testarray() {
+//output the current GameState, as well as all of the Clan States
+function outputgamestate() {
+    for (let i in clans) {
+        console.log(clans[i])
+    };
     console.log(GameState)
+}
+
+function devtool1() {
+    let c = prompt("Clan?");
+    let cc = clans[c];
+    let p = prompt("Prefix?");
+    killcat(cc,p);
+    alert("The deed has been done.")
+}
+
+//Randomly assigned to whatever
+function devtooln() {
+    killcat(ThunderClan,"Fire");
 }
