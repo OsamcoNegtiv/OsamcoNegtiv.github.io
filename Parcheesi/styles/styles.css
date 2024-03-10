@@ -1,0 +1,55 @@
+ body {
+	 background-color: #d5a6bd; /* Yeah I'm gonna... I'm gonna want to change this. EDIT: Nevermind this colour rules! */
+	 font-family:"Trebuchet MS";
+}
+p {
+	color: black;
+	font-size: 1.5vw;
+}
+a {
+	color: black;
+	text-decoration: none;
+}
+a:link, a:visited {
+	color: black;
+	text-align: center;
+	text-decoration: none;
+}
+a:hover, a:active {
+  color: blue;
+}
+#navbar { /* Handles the top navbar */
+	font-family: "Georgia";
+	background-color: blue;
+	border: .2vw solid green;
+	max-height: 9vw;
+	max-width: 96vw;
+	padding: 1vw;
+	text-align: center;
+}
+#navbar a {
+	padding: 2vw;
+}
+a.trollplay { /* Handles just the logo */
+	color: fuchsia;
+	font-size: 6vw;
+}
+a.maintop { /* handles all of the other links in the navbar */
+	color: yellow;
+	font-size: 1.5vw;
+}
+.imgbox {
+	float: right;
+	border: .2vw solid green;
+	text-align: center;
+}
+.imgbox img {
+  max-width: 6vw;
+  height: auto;
+  padding: 0.5vw;
+}
+.imgbox p {
+	color: black;
+	font-size: .6vw;
+	font-weight: bold;
+}
